@@ -1,30 +1,18 @@
 const users = [];
 
-const addUser = ({
-    id,
-    name,
-    room
-}) => {
+const addUser = ({ id, name, room }) => {
     name = name.trim();
     room = room.trim();
 
     const existingUser = users.find(user => user.room.toLowerCase() === room.toLowerCase() && user.name.toLowerCase() === name.toLowerCase());
 
     if (existingUser)
-        return {
-            error: `A user with name ${name} is already in room ${room}.`
-        };
+        return { error: `A user with name ${name} is already in room ${room}.` };
 
-    const user = {
-        id,
-        name,
-        room
-    };
+    const user = { id, name, room };
     users.push(user);
 
-    return {
-        user
-    };
+    return { user };
 }
 
 const removeUser = (id) => {
@@ -34,7 +22,7 @@ const removeUser = (id) => {
         return users.splice(index, 1)[0];
 }
 
-const getUser = (id) => user.find(user => user.id === id);
+const getUser = (id) => users.find(user => user.id === id);
 
 const getUsersInRoom = (room) => users.filter(user => user.room === room);
 
