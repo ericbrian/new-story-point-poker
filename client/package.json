@@ -24,6 +24,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "devDependencies": {
+    "puppeteer": "^2.1.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

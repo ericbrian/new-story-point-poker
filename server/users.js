@@ -1,18 +1,30 @@
 const users = [];
 
-const addUser = ({ id, name, room }) => {
-    name = name.trim().toLowerCase();
-    room = room.trim().toLowerCase();
+const addUser = ({
+    id,
+    name,
+    room
+}) => {
+    name = name.trim();
+    room = room.trim();
 
-    const existingUser = users.find(user => user.room === room && user.name === name);
+    const existingUser = users.find(user => user.room.toLowerCase() === room.toLowerCase() && user.name.toLowerCase() === name.toLowerCase());
 
     if (existingUser)
-        return { error: `A user with name ${name} is already in room ${room}.` };
+        return {
+            error: `A user with name ${name} is already in room ${room}.`
+        };
 
-    const user = { id, name, room };
+    const user = {
+        id,
+        name,
+        room
+    };
     users.push(user);
 
-    return { user };
+    return {
+        user
+    };
 }
 
 const removeUser = (id) => {
@@ -31,8 +43,16 @@ const getRoomNames = () => {
         return [];
 
     const rooms = new Set();
-    users.forEach(user => { rooms.add(user.room) });
+    users.forEach(user => {
+        rooms.add(user.room)
+    });
     return [...rooms].sort();
 };
 
-module.exports = { addUser, removeUser, getUser, getUsersInRoom, getRoomNames };
+module.exports = {
+    addUser,
+    removeUser,
+    getUser,
+    getUsersInRoom,
+    getRoomNames
+};
