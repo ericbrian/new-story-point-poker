@@ -1,23 +1,27 @@
 /*
 Contant that holds by room.
 */
-const tables = {};
+let hands = [];
+
+const addHand = ({ room, id, hand }) => {
+    removeHand(id);
+    hands.push({ room, id, hand });
+    return getHands(room);
+};
 
 /**
  * Get the collection of user hands in a room
  * @param {String} room The room name.
  * @return {Array} Collection of user hands.
  */
-const getHands = (room) => tables[roomid];
+const getHands = (room) => hands.filter(hand => hand.room === room);
 
-const setHand = (room, id, hand) => {
-    if (!table[room])
-        table[room] = {};
-    table[room][id] = hand;
-}
-
-const clearHand = (room) => {
-    delete table[room];
+const clearRoom = (room) => {
+    hands = hands(hand => hand.room !== room);
 };
 
-module.exports = { getHands, setHand, clearHand };
+const removeHand = (id) => {
+    hands = hands.filter(hand => hand.id !== id);
+};
+
+module.exports = { getHands, addHand, removeHand, clearRoom };
