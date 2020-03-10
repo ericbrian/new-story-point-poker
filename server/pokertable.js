@@ -9,19 +9,14 @@ const addHand = ({ room, id, hand }) => {
     return getHands(room);
 };
 
-/**
- * Get the collection of user hands in a room
- * @param {String} room The room name.
- * @return {Array} Collection of user hands.
- */
 const getHands = (room) => hands.filter(hand => hand.room === room);
 
 const clearRoom = (room) => {
-    hands = hands(hand => hand.room !== room);
-};
+    hands = hands.filter(hand => hand.room !== room);
+}
 
 const removeHand = (id) => {
     hands = hands.filter(hand => hand.id !== id);
-};
+}
 
 module.exports = { getHands, addHand, removeHand, clearRoom };

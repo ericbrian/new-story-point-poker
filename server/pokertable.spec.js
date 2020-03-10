@@ -8,6 +8,7 @@ test('should persist player\'s hand.', () => {
     addHand({ room, id: 'id2', hand: '5' });
     addHand({ room, id: 'id3', hand: 'xl' });
     addHand({ room, id: 'id4', hand: 's' });
+
     addHand({ room, id, hand: 'm' });
     const res = addHand({ room, id, hand });
 
@@ -28,8 +29,14 @@ test('should return all the hands in a room', () => {
     expect(res.length).toBe(1);
 });
 
-/*
-test('', () => { });
-test('', () => { });
-test('', () => { });
- */
+test('should remove all hands from room.', () => {
+    const room = 'room clear hand';
+
+    addHand({ room, id: 'id8', hand: '5' });
+    addHand({ room, id: 'id9', hand: 'xl' });
+    addHand({ room, id: 'id10', hand: 's' });
+
+    clearRoom(room);
+    const res2 = getHands(room);
+    expect(res2.length).toBe(0);
+});
