@@ -2,7 +2,7 @@ const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
 
-const { addUser, removeUser, getUser, getUsersInRoom, getRoomNames } = require('./users');
+const { addUser, removeUser, getUser, getUsersInRoom, getRoomNames } = require('./components/users');
 
 const PORT = process.env.PORT || 5000;
 
