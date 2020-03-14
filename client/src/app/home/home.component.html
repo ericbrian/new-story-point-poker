@@ -2,7 +2,9 @@
     <div class='joinInnerContainer'>
         <h1 class="heading">Join</h1>
         <div>
-            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text" />
+            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text"
+                (change)="OnNameUpdate($event.target.value)" (blur)="OnNameUpdate($event.target.value)"
+                (keyup)="OnNameUpdate($event.target.value)" />
         </div>
         <div>
             <input placeholder="Room" id="joinRoomInput" class="joinInput mt-20" type="text" [(value)]="joinRoomVal"
@@ -22,6 +24,6 @@
                 <option *ngFor="let deck of decks">{{ deck }}</option>
             </select>
         </div>
-        <button id="joinSubmit" class="button mt-20" type="submit" *ngIf="showJoinButton">Join In</button>
+        <button id="joinSubmit" class="button mt-20" type="submit" *ngIf="hasRoom && hasName">Join In</button>
     </div>
 </div>

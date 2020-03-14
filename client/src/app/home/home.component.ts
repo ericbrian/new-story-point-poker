@@ -28,13 +28,16 @@ export class HomeComponent implements OnInit {
     }
 
     showDeckSelector(roomname) {
-        this.showDeckSelectElement = this.rooms && this.rooms.indexOf(roomname) == -1;
+        this.showDeckSelectElement = roomname && this.rooms && this.rooms.indexOf(roomname.trim()) == -1;
+    }
 
+    OnNameUpdate(name: string) {
+        this.hasName = name && name.trim().length > 0 ? true : false;
     }
 
     OnRoomNameUpdate(roomname: string) {
         this.showDeckSelector(roomname);
-        this.hasRoom = roomname.length > 0 ? true : false;
+        this.hasRoom = roomname && roomname.trim().length > 0 ? true : false;
     }
 
     useRoom(roomname) {
