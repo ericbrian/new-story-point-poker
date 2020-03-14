@@ -2,21 +2,26 @@
     <div class='joinInnerContainer'>
         <h1 class="heading">Join</h1>
         <div>
-            <input placeholder="Name" id="joinName" class="joinInput" type="text" />
+            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text" />
         </div>
         <div>
-            <input placeholder="Room" id="joinRoom" class="joinInput mt-20" type="text" />
+            <input placeholder="Room" id="joinRoomInput" class="joinInput mt-20" type="text" [(value)]="joinRoomVal"
+                (change)="OnRoomNameUpdate($event.target.value)" (blur)="OnRoomNameUpdate($event.target.value)"
+                (keyup)="OnRoomNameUpdate($event.target.value)" />
         </div>
-        <div id="currentRooms" class="mt-20">
-            <div><strong>Existing Rooms</strong></div>
-            <div class="smaller">something 1, something 2</div>
+        <div id="currentRooms" class="mt-20" *ngIf="rooms && rooms.length > 0">
+            <div><strong>Existing Rooms</strong> (click to select)</div>
+            <div class="smaller mt-10">
+                <span class="roomcontainer" *ngFor="let room of rooms"
+                    (click)="useRoom($event.target.innerText)">{{ room }}</span>
+            </div>
         </div>
-        <div class="mt-20">
+        <div class="mt-20" *ngIf="decks && decks.length>0 && showDeckSelectElement">
             <div><strong>Which deck?</strong></div>
             <select>
-                <option>fib</option>
+                <option *ngFor="let deck of decks">{{ deck }}</option>
             </select>
         </div>
-        <button id="joinSubmit" class="button mt-20" type="submit">Join In</button>
+        <button id="joinSubmit" class="button mt-20" type="submit" *ngIf="showJoinButton">Join In</button>
     </div>
 </div>

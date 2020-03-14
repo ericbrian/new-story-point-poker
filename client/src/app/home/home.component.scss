@@ -16,7 +16,7 @@ $primary: rgb(111, 0, 255);
 }
 
 .joinInnerContainer {
-    width: 40%;
+    width: 60%;
 }
 
 .joinInput {
@@ -44,6 +44,10 @@ $primary: rgb(111, 0, 255);
     width: 100%;
 }
 
+.mt-10 {
+    margin-top: 10px;
+}
+
 .mt-20 {
     margin-top: 20px;
 }
@@ -67,4 +71,12 @@ select {
 
 .smaller {
 font-size: smaller;
+}
+
+.roomcontainer {
+    padding:3px;
+    margin:3px;
+    background-color: lightgray;
+    border-radius:3px;
+    cursor: pointer;
 }

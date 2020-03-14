@@ -1,4 +1,4 @@
-const users = [];
+const users = [{ room: "Eric 1" }];
 
 const addUser = ({ id, name, room }) => {
     name = name.trim();
