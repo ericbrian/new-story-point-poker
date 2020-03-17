@@ -2,12 +2,12 @@
     <div class='joinInnerContainer'>
         <h1 class="heading">Join</h1>
         <div>
-            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text" [(value)]="userName"
+            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text" [(ngModel)]="userName"
                 (change)="OnNameUpdate($event.target.value)" (blur)="OnNameUpdate($event.target.value)"
                 (keyup)="OnNameUpdate($event.target.value)" />
         </div>
         <div>
-            <input placeholder="Room" id="joinRoomInput" class="joinInput mt-20" type="text" [(value)]="userRoom"
+            <input placeholder="Room" id="joinRoomInput" class="joinInput mt-20" type="text" [(ngModel)]="userRoom"
                 (change)="OnRoomNameUpdate($event.target.value)" (blur)="OnRoomNameUpdate($event.target.value)"
                 (keyup)="OnRoomNameUpdate($event.target.value)" />
         </div>
