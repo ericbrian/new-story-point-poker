@@ -37,7 +37,7 @@ const decks = [
 
 const deck_extension = [
     { "?": 0 },
-    { ":coffee:": 0 }
+    { "☕": 0 }
 ];
 
 // Private

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http.service';
 import { stringify } from 'querystring';
 
 @Component({
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     }
 
     showDeckSelector(roomname) {
-        this.showDeckSelectElement = roomname && this.rooms && this.rooms.indexOf(roomname.trim()) == -1;
+        this.showDeckSelectElement = this.rooms && this.rooms.indexOf(roomname?.trim()) == -1;
     }
 
     OnNameUpdate(name: string) {
@@ -43,5 +43,9 @@ export class HomeComponent implements OnInit {
     useRoom(roomname) {
         this.showDeckSelector(roomname);
         this.joinRoomVal = roomname;
+    }
+
+    joinRoom() {
+
     }
 }
