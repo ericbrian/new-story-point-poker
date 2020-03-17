@@ -7,10 +7,12 @@ import { User } from '../models/user';
     providedIn: 'root'
 })
 export class PokerService {
+    public user: User;
 
     constructor(private socket: Socket) { }
 
-    joinRoom(name, room) {
-        this.socket.emit('join', { name, room });
+    joinRoom(callback) {
+        this.socket.emit('join', { name: this.user.name, room: this.user.room }, callback);
+        
     }
 }

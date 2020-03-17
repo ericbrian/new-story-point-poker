@@ -2,12 +2,12 @@
     <div class='joinInnerContainer'>
         <h1 class="heading">Join</h1>
         <div>
-            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text"
+            <input placeholder="Name" id="joinNameInput" class="joinInput" type="text" [(value)]="userName"
                 (change)="OnNameUpdate($event.target.value)" (blur)="OnNameUpdate($event.target.value)"
                 (keyup)="OnNameUpdate($event.target.value)" />
         </div>
         <div>
-            <input placeholder="Room" id="joinRoomInput" class="joinInput mt-20" type="text" [(value)]="joinRoomVal"
+            <input placeholder="Room" id="joinRoomInput" class="joinInput mt-20" type="text" [(value)]="userRoom"
                 (change)="OnRoomNameUpdate($event.target.value)" (blur)="OnRoomNameUpdate($event.target.value)"
                 (keyup)="OnRoomNameUpdate($event.target.value)" />
         </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="mt-20" *ngIf="decks && decks.length>0 && showDeckSelectElement">
             <div><strong>Which deck?</strong></div>
-            <select>
+            <select [(ngModel)]="userDeck">
                 <option *ngFor="let deck of decks">{{ deck }}</option>
             </select>
         </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { HttpService } from '../services/http.service';
-import { stringify } from 'querystring';
+import { PokerService } from '../services/poker.service';
+import { User } from '../models/user';
 
 @Component({
     selector: 'app-home',
@@ -8,15 +11,17 @@ import { stringify } from 'querystring';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    userName: string;
+    userRoom: string;
+    userDeck: string;
     decks: string[] = [];
     rooms: string[] = [];
     showDeckSelectElement: boolean = true;
     showJoinButton: boolean = false;
     hasName: boolean = false;
     hasRoom: boolean = false;
-    joinRoomVal: string = "";
 
-    constructor(private _http: HttpService) { }
+    constructor(private _http: HttpService, private _router: Router, private _pokerService: PokerService) { }
 
     ngOnInit(): void {
         this._http.getRoomNames().subscribe(data => {
@@ -42,10 +47,18 @@ export class HomeComponent implements OnInit {
 
     useRoom(roomname) {
         this.showDeckSelector(roomname);
-        this.joinRoomVal = roomname;
+        this.userRoom = roomname;
     }
 
     joinRoom() {
+        const user = new User();
+        user.name = this.userName;
+        user.room = this.userRoom;
+        user.deck = this.userDeck;
 
+        this._pokerService.user = user;
+        this._pokerService.joinRoom(() => {
+            this._router.navigateByUrl('/room')
+        });
     }
 }
